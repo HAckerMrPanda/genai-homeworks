@@ -1,6 +1,6 @@
 # Homework #2: Chat Prompting - Report
 
-**Student:** Kodirjon Khayitov 
+**Student:** Kodirjon Khayitov Kodirjon_Khayitov@student.itpu.uz
 **Model:** Gemini 3 Flash (Gemini app, "Fast" mode, no extended reasoning)  
 **Date:** 2026-10-31  
 **Reviewer:** `ihar_rubanovich@epam.com`
