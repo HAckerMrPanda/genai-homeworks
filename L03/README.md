@@ -1,6 +1,6 @@
 # HW #3: First API Call and Prompt Patterns in Code - Report
 
-**Student:** Kodirjon Khayitov  kodirjon_khayitov@student.itpu.uz 
+**Student:** Kodirjon Khayitov  `kodirjon_khayitov@student.itpu.uz` 
 **Model:** `gemini-3.5-flash-lite` (Google GenAI SDK)  
 **Date:** 2026-10-31  
 **Reviewer:** `ihar_rubanovich@epam.com`  
