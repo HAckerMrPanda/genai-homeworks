@@ -1,6 +1,7 @@
 # Video Acceptance • Homework L05
 
-**Student:** [First Last / EPAM alias] • **Track:** B: courier • **Date:** 2026-11-14  
+**Student:** Kodirjon Khayitov  `kodirjon_khayitov@student.itpu.uz` 
+**Reviewer:** `ihar_rubanovich@epam.com` • **Track:** B: courier • **Date:** 2026-11-14  
 Timecodes are inside each clip (shots) or inside `final.mp4` (joins). Frames were checked at 4–10 frames per second.
 
 | # | Checklist item | Shot 1 | Shot 2 | Shot 3 | Shot 2, service 2 (Qwen) | Notes (what, where, timecode) |
