@@ -23,7 +23,8 @@
 - **Pivot:** `Pivot!C3:F14` is month × channel built with `SUMIFS` (e.g. `C3 =SUMIFS(Sales_clean!$G$2:$G$1261, Sales_clean!$J$2:$J$1261, $B3, Sales_clean!$B$2:$B$1261, C$2)`).
 - **Pivot vs total:** grand total `Pivot!G15` = **$2,520,078**, and `Pivot!G16` (= G15 − SUM of Sales_clean revenue) = **0**.
 - **Chart in the workbook:** a stacked column chart (revenue by month × channel) and a ROAS line chart on the `Pivot` sheet.
-- **My check in Excel:** [open `analysis.xlsx`, click `Sales_clean!K2` and `Pivot!C3`, confirm the `fx` bar shows the formula: ✓ / ✗]
+- **My check in Excel:** [open `analysis.xlsx`, click `Sales_clean!K2` and `Pivot!C3`, confirm the `fx` bar shows the formula: ✓
+  
 
 ## 4. One chart point against the source and the previous version
 | Point | Source file / workbook | Chart before | Chart after | Match |
