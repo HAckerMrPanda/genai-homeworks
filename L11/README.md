@@ -1,7 +1,7 @@
 # L11 • Project rules and one skill
 
 **Author:** Kodirjon Khayitov · **Date:** 2026-11-15
-
+**Reviewer:** `ihar_rubanovich@epam.com` 
 ## What is here
 | File | Status |
 |---|---|
