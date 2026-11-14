@@ -1,0 +1,13 @@
+# Speech-to-text of audio/mix.wav (the final_voiced.mp4 soundtrack)
+# Service: Google AI Studio, temporary chat, model Gemini 4 Hydrogen (gemini-4-hydrogen), Grounding off
+# Prompt (exactly): Transcribe verbatim. Do not correct mistakes. Write numbers as you hear them.
+# The script was NOT given to the model. AI Studio listed the upload as "Generated Audio November 14, 2026 - <time>.wav", 437 tokens.
+# Outputs below are copied unedited (the model's hidden "thoughts" are not part of the answer and are omitted).
+
+=== Run 1 (2026-11-14 18:13) ===
+Order four seventeen, picked up at six forty-two. Route Park Street to Elm Avenue. Courier Timur arriving in one minute.
+
+=== Run 2 (2026-11-14 18:16, same file, same prompt) ===
+Order 417, picked up at 6:42.
+Route: Park Street to Elm Avenue.
+Courier Timur arriving in 1 minute.
