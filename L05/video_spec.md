@@ -1,6 +1,7 @@
 # Video Specification • Homework L05
 
-**Student:** [First Last / EPAM alias]  
+**Student:** Kodirjon Khayitov  `kodirjon_khayitov@student.itpu.uz` 
+**Reviewer:** `ihar_rubanovich@epam.com`   
 **Track:** B: courier  
 **Service 1:** Dreamina (CapCut / ByteDance), Seedance models — shots 1–3  
 **Service 2:** Qwen Chat (chat.qwen.ai), "Create Video" — shot 2 repeated  
