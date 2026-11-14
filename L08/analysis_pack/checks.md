@@ -1,6 +1,8 @@
 # 60-second check • Northstar 2025
 
-**Student:** [name / alias] • **Data:** `northstar_2025_EN.xlsx`, practice data (green zone) • **Chat used:** Claude (one conversation: file upload, cleaning, workbook, charts, report, recipe) • **Date:** 2026-11-14
+**Student:** Kodirjon Khayitov  `kodirjon_khayitov@student.itpu.uz` 
+**Date:** 2026-11-14  
+**Reviewer:** `ihar_rubanovich@epam.com`• **Data:** `northstar_2025_EN.xlsx`, practice data (green zone) • **Chat used:** Claude (one conversation: file upload, cleaning, workbook, charts, report, recipe) • **Date:** 2026-11-14
 
 ## 1. File description (step 1)
 - **Sales:** 1,261 data rows (excluding the header), 9 columns. One row is one day × channel × category × region × warehouse, not one order. Period: 2025-01-01 to 2025-12-31.
