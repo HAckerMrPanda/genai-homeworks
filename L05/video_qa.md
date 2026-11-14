@@ -1,0 +1,30 @@
+# Video Acceptance • Homework L05
+
+**Student:** [First Last / EPAM alias] • **Track:** B: courier • **Date:** 2026-11-14  
+Timecodes are inside each clip (shots) or inside `final.mp4` (joins). Frames were checked at 4–10 frames per second.
+
+| # | Checklist item | Shot 1 | Shot 2 | Shot 3 | Shot 2, service 2 (Qwen) | Notes (what, where, timecode) |
+|:-|:---|:-:|:-:|:-:|:-:|:---|
+| 1 | **Hands and objects** in contact: no merging or vanishing | ✓ | partly | ✓ | ✓ | **Shot 1** 00:00–00:01.5: the bag passes from the barista's hands to the courier's, and the barista's hand leaves the frame at ~00:01.5 with no merging. **Shot 2** 00:00.9–00:01.1 and ~00:01.6: the far foot is not clearly on its pedal (crank lost in blur); hands on the bars are stable. **Shot 3** 00:00.4–00:02.2: the customer's upper hand holds the handles and the lower hand is under the bag; the courier lets go at 00:02.4, and 00:02.6–00:03.6 the bag leaves through the door intact. **Qwen** hands stay on the bars; from 00:03.75 the pedals leave the frame, so foot contact can no longer be judged. |
+| 2 | **Text and numbers**: readable and stable | ✓ | ✓ | ✓ | ✓ | No text was requested. **Shot 1** coffee-bag packs are blank. **Shot 2 / Qwen** NY plates and taxi roof signs are too small to read but do not flicker; the pedestrian signal shows a hand icon. **Shot 3** has no text. (The baseline failed this item; see below.) |
+| 3 | **Face and clothes** match the reference | ✓ | ✓ | ✓ | partly | Glasses, beard, faded hair, the orange jacket's stripe pattern, the navy backpack with silver stripe and the watch on the left wrist stay stable in all three Dreamina shots. **Qwen** 00:04.0–00:05.1: a small dark rectangular patch appears on the jacket chest near the zipper, an invented detail. |
+| 4 | **Motion**: speed and direction (wheels forward, camera moves as asked) | partly | ✓ | partly | ✗ | **Shot 1** asked for one slow dolly in, but got a push-in at 00:00–00:02 and then a pan right following him from 00:03.0. The single "turn toward the exit" became two steps: facing the camera at 00:03.8, then to the right at 00:04.3. **Shot 2** has one tracking move to the left; he rides left, the spokes are motion-blurred (wheels turning) and the pedalling cycle is plausible. **Shot 3** has a static camera ✓, but 00:03.75–00:05.0 is dead time: he just stands smiling and the requested nod is barely visible. **Qwen** tracks correctly until ~00:02.5, then adds a push-in (full body → waist-up by 00:04.5) and his heading rotates toward camera-left, so the bicycle leaves the frame. That is two moves instead of one. |
+| 5 | **First frame**: matches the approved key frame | partly | ✓ | ✓ | ✓ | **Shot 1** 00:00: the framing matches `09_pickup.png`, but the 4:3 key frame was outpainted to 16:9, which added the barista's face on the left and a street window on the right. **Shot 2** matches `05_road.png` almost pixel-for-pixel (4:3 kept). **Shot 3** matches `06_door.png` with a tiny reframe. **Qwen** matches `05_road.png`. |
+
+| # | Checklist item | Join 1 → 2 | Join 2 → 3 | Notes (timecode in final.mp4) |
+|:-|:---|:-:|:-:|:---|
+| 6 | **Shot joins**: light and colour match | ✗ | partly | **Join 1, 00:04.59–00:05.09:** the warm amber, sunlit cafe interior cuts to a cool, overcast daylight street, a strong white-balance jump. Screen direction also flips: shot 1 ends with him turning right, while shot 2 rides left. **Join 2, 00:09.11–00:09.61:** cool daylight goes to the warm tungsten hallway. The jump is story-motivated (outdoor → indoor), but the crossfade shows it as a double exposure at 00:09.35. Direction is consistent: he rides left and faces left at the door. |
+
+### Text-to-video baseline vs image-to-video
+The baseline (Kling 4.0, one prompt) put 3 scenes and 5 actions into 5 s. It skipped the key action (00:01.4: the bag never leaves the barista's hand), teleported the bag into a bike basket (00:01.5), invented a heart logo on the jacket and backpack (00:00–00:05), produced garbled shop signs (00:01.5–00:03.4) and lost the L04 identity (no sleeve stripes, rectangular glasses, black trousers). The image-to-video shots passed items 2, 3 and 5 almost entirely, because the approved key frame fixes who and where. The prompt only had to describe one action and one camera move, so each action completed: the bag is taken, the bike is ridden, the bag is handed over. The remaining errors moved from identity and logic to camera discipline (extra moves) and pacing.
+
+### Service 1 vs service 2 (shot 2)
+Same key frame and same prompt. **Dreamina (Seedance 1.0 Fast)** held the single requested move (tracking left) for the full 5 s and kept the whole bicycle in frame. It passed item 4, with only a soft pedal contact under item 1. **Qwen** matched the first frame equally well (item 5 ✓) and kept the face, but failed item 4: it added an unrequested push-in after ~00:02.5 and rotated the courier's heading. It also invented a chest patch (item 3, 00:04.0+). For this shot Dreamina is clearly better; Qwen behaves more like "make it cinematic" than "follow the camera instruction".
+
+### Conclusion
+Most defects come from the model filling in what the prompt or key frame left open. The baseline had too little time for its story. Shot 1's 16:9 output forced outpainting of a 4:3 frame, and 5-second clips with one short action leave dead time (shot 3) or invite extra camera moves (shot 1, Qwen). I would fix these as follows:
+- Generate all key frames in the output aspect ratio (16:9) so nothing is outpainted.
+- Use one model for all three shots so format, sound and colour match. Shot 1 came from Seedance 2.0 Mini (16:9 with audio), shots 2–3 from 1.0 Fast (4:3, silent).
+- Write the end state into the prompt ("…and stops, the camera holds"), or trim each shot to 4 s in the edit to remove dead time.
+- In the storyboard, match light across joins (an overcast-morning cafe instead of golden sun) and keep the screen direction: the courier exits left in shot 1 and rides left in shot 2.
+- Where a service offers camera controls, use them instead of words to lock "one move" and stop added push-ins.
