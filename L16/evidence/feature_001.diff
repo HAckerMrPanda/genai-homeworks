@@ -1,0 +1,81 @@
+diff --git a/app/index.html b/app/index.html
+index 7abfd9b..c6288b4 100644
+--- a/app/index.html
++++ b/app/index.html
+@@ -169,7 +169,7 @@ const STATUS = { submitted:["Submitted","b-info"], approved:["Approved","b-ok"],
+ 
+ /* ---------- State ---------- */
+ const bySku = Object.fromEntries(CATALOG.map(p => [p.sku, p]));
+-let state = { draft: [], unmatched: [], source: "", sourceKind: "", interpreter: "", orders: [], seq: 1001, selected: null };
++let state = { draft: [], unmatched: [], source: "", sourceKind: "", interpreter: "", orders: [], seq: 1001, selected: null, repeatNotice: "" };
+ try { const saved = JSON.parse(localStorage.getItem("wd-state") || "null"); if (saved && Array.isArray(saved.orders)) { state.orders = saved.orders; state.seq = saved.seq || 1001; } } catch (e) {}
+ function persist(){ try { localStorage.setItem("wd-state", JSON.stringify({ orders: state.orders, seq: state.seq })); } catch (e) {} }
+ 
+@@ -275,6 +275,7 @@ async function interpret(){
+     used = e && e.message === "no-model" ? "local rule-based parser (AI model not available in this view)" : "local rule-based parser (AI model call failed: " + (e && (e.code || e.message)) + ")";
+   }
+   state.draft = mergeLines(result.lines);
++  state.repeatNotice = "";
+   state.unmatched = result.unmatched;
+   state.source = text;
+   state.sourceKind = state.sourceKind || "text";
+@@ -293,7 +294,8 @@ function renderCatalog(){
+ function renderDraft(){
+   const d = state.draft;
+   let html = "";
+-  if (!d.length && !state.unmatched.length) html = `<p class="empty">No draft yet. Prepare one from your message, a file or the catalog.</p>`;
++  if (state.repeatNotice) html += `<div id="repeatNotice" class="unmatched" role="status" style="margin:0 0 10px">${esc(state.repeatNotice)}</div>`;
++  if (!d.length && !state.unmatched.length) html += `<p class="empty">No draft yet. Prepare one from your message, a file or the catalog.</p>`;
+   if (d.length){
+     html += `<div class="tw"><table><thead><tr><th>Item</th><th class="num">Cases</th><th class="num">Qty</th><th class="num">Line total</th></tr></thead><tbody>` +
+       d.map((l, i) => { const p = bySku[l.sku]; return `<tr>
+@@ -318,6 +320,22 @@ function renderHistory(){
+ }
+ function addrLabel(id){ return (ADDRESSES.find(a => a.id === id) || { label: id }).label; }
+ 
++/* Feature 001: repeat only products that are not out of stock now; the original order is not modified. */
++function repeatOrder(o){
++  const kept = o.lines.filter(l => bySku[l.sku].avail !== "out");
++  const skipped = o.lines.filter(l => bySku[l.sku].avail === "out").map(l => bySku[l.sku].name);
++  state.draft = kept.map(l => ({ sku: l.sku, cases: l.cases, said: "", note: "" }));
++  state.unmatched = [];
++  state.source = `Repeat of order #${o.id}`; state.sourceKind = "repeat"; state.interpreter = "repeat of a previous order (no interpretation)";
++  state.repeatNotice = !skipped.length ? ""
++    : kept.length ? `Not added from order #${o.id} — out of stock: ${skipped.join(", ")}.`
++    : `Nothing could be repeated from order #${o.id} — all products are out of stock: ${skipped.join(", ")}.`;
++  $("addressSelect").value = o.address;
++  renderDraft();
++  toast(kept.length ? `Draft filled from #${o.id}: ${kept.length} of ${o.lines.length} line(s)` : `Nothing to repeat from #${o.id}`);
++  window.scrollTo({ top: 0, behavior: "smooth" });
++}
++
+ function submitOrder(){
+   if (!state.draft.length) return;
+   const now = new Date();
+@@ -329,7 +347,7 @@ function submitOrder(){
+     status: "submitted", managerNote: "", log: [{ at: now.toLocaleTimeString("en-GB", { timeStyle: "short" }), what: "Submitted by buyer" }]
+   };
+   state.orders.unshift(order); persist();
+-  state.draft = []; state.unmatched = []; state.source = ""; state.sourceKind = ""; state.interpreter = "";
++  state.draft = []; state.unmatched = []; state.source = ""; state.sourceKind = ""; state.interpreter = ""; state.repeatNotice = "";
+   $("orderText").value = ""; $("interpretStatus").textContent = `Order #${order.id} submitted. Your manager will review it.`;
+   renderDraft(); renderHistory(); renderManager();
+   toast(`Order #${order.id} submitted`);
+@@ -394,7 +412,7 @@ $("addressSelect").innerHTML = ADDRESSES.map(a => `<option value="${a.id}">${esc
+ $("exampleBtn").addEventListener("click", () => { $("orderText").value = EXAMPLE; state.sourceKind = "text"; });
+ $("interpretBtn").addEventListener("click", interpret);
+ $("submitBtn").addEventListener("click", submitOrder);
+-$("clearDraftBtn").addEventListener("click", () => { state.draft = []; state.unmatched = []; renderDraft(); });
++$("clearDraftBtn").addEventListener("click", () => { state.draft = []; state.unmatched = []; state.repeatNotice = ""; renderDraft(); });
+ $("orderText").addEventListener("input", () => { if (!state.sourceKind) state.sourceKind = "text"; });
+ $("fileInput").addEventListener("change", async e => {
+   const f = e.target.files[0]; if (!f) return;
+@@ -407,7 +425,7 @@ document.body.addEventListener("click", e => {
+   if (t.dataset.add){ state.draft = mergeLines([...state.draft, { sku: t.dataset.add, cases: 1, said: "", note: "" }]); if (!state.source) { state.sourceKind = "catalog"; } state.interpreter = state.interpreter || "catalog selection (no interpretation)"; renderDraft(); }
+   if (t.dataset.inc){ state.draft[+t.dataset.inc].cases++; renderDraft(); }
+   if (t.dataset.dec){ const l = state.draft[+t.dataset.dec]; l.cases--; if (l.cases <= 0) state.draft.splice(+t.dataset.dec, 1); renderDraft(); }
+-  if (t.dataset.repeat){ const o = state.orders.find(x => x.id === +t.dataset.repeat); if (o){ state.draft = o.lines.map(l => ({ sku: l.sku, cases: l.cases, said: "", note: "" })); state.unmatched = []; state.source = `Repeat of order #${o.id}`; state.sourceKind = "repeat"; state.interpreter = "repeat of a previous order (no interpretation)"; $("addressSelect").value = o.address; renderDraft(); toast(`Draft filled from #${o.id}`); window.scrollTo({ top: 0, behavior: "smooth" }); } }
++  if (t.dataset.repeat){ const o = state.orders.find(x => x.id === +t.dataset.repeat); if (o){ repeatOrder(o); } }
+   if (t.dataset.open){ state.selected = +t.dataset.open; renderManager(); }
+   if (t.dataset.act){ act(t.dataset.act); }
+ });

@@ -1,0 +1,23 @@
+== Baseline checks ==
+[PASS] B01 page loads without JS errors
+[PASS] B02 catalog shows 10 products
+[PASS] B03 example order → 5 lines, total 2,227,200
+[PASS] B04 case rounding explained (40→42)
+[PASS] B05 olive-oil question listed as not recognised
+[PASS] B06 submit → #1001 Submitted in history
+[PASS] B07 manager sees original buyer input
+[PASS] B08 approve → fulfilment visible to buyer
+[PASS] B09 catalog +case adds line; out-of-stock add disabled
+[PASS] B10 injected discount ignored (774,000)
+[PASS] B11 repeat fills draft and keeps address
+== Feature 001 target checks ==
+[PASS] T01 AC1 repeat skips out-of-stock line
+[PASS] T02 AC2 notice names skipped product
+[PASS] T03 AC3 total recalculated, limited kept
+[PASS] T04 AC4 original order unchanged
+[PASS] T05 AC5 all out of stock → no empty draft
+[PASS] T06 AC6 notice cleared on new draft
+
+Baseline: 11/11 passed · Target: 6/6 passed
+EXPECTATION implemented: MET
+exit=0
