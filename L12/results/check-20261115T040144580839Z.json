@@ -1,0 +1,130 @@
+{
+  "time_utc": "2026-11-15T04:01:43.329242+00:00",
+  "transport": "stdio",
+  "server_sha256": "a8efb7d7b7a40a1e59ce5257fb1cd7ce4d9bf42985127374f4976a3aff0be294",
+  "source_sha256": "6644928e26b5eaea17fdb29a50b3ad0015659db70d3de96ce24242fec73a41d3",
+  "source_snapshot": {
+    "sessions": [
+      {
+        "id": "W101",
+        "title": "MCP practice",
+        "date": "2026-11-04",
+        "start": "18:30",
+        "timezone": "Europe/Warsaw",
+        "duration_minutes": 90,
+        "registration_required": true
+      }
+    ]
+  },
+  "model_used": false,
+  "calls": [
+    {
+      "method": "tools/call",
+      "name": "get_session",
+      "arguments": {
+        "session_id": "W101"
+      },
+      "result": {
+        "found": true,
+        "session": {
+          "id": "W101",
+          "title": "MCP practice",
+          "date": "2026-11-04",
+          "start": "18:30",
+          "timezone": "Europe/Warsaw",
+          "duration_minutes": 90,
+          "registration_required": true
+        }
+      },
+      "raw_result": {
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "my-session-directory",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"found\": true,\n  \"session\": {\n    \"id\": \"W101\",\n    \"title\": \"MCP practice\",\n    \"date\": \"2026-11-04\",\n    \"start\": \"18:30\",\n    \"timezone\": \"Europe/Warsaw\",\n    \"duration_minutes\": 90,\n    \"registration_required\": true\n  }\n}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": null,
+        "isError": false,
+        "resultType": "complete"
+      }
+    },
+    {
+      "method": "tools/call",
+      "name": "get_session",
+      "arguments": {
+        "session_id": "W999"
+      },
+      "result": {
+        "found": false,
+        "session_id": "W999",
+        "message": "Session not found"
+      },
+      "raw_result": {
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "my-session-directory",
+            "version": ""
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"found\": false,\n  \"session_id\": \"W999\",\n  \"message\": \"Session not found\"\n}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": null,
+        "isError": false,
+        "resultType": "complete"
+      }
+    }
+  ],
+  "protocol_version": "2026-07-28",
+  "tools_list": {
+    "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+        "name": "my-session-directory",
+        "version": ""
+      }
+    },
+    "ttlMs": 0,
+    "cacheScope": "private",
+    "nextCursor": null,
+    "tools": [
+      {
+        "name": "get_session",
+        "title": null,
+        "description": "Look up one session by its ID (for example W101) in the local sessions.json.\n\nReturns {\"found\": true, \"session\": {...}} when the ID exists,\notherwise {\"found\": false, \"session_id\": ..., \"message\": \"Session not found\"}.\n",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "session_id": {
+              "title": "Session Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "session_id"
+          ],
+          "title": "get_sessionArguments"
+        },
+        "execution": null,
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "resultType": "complete"
+  },
+  "status": "pass"
+}
