@@ -1,6 +1,7 @@
 # L14 • From idea to product: WholesaleDesk prototype
 
 **Author:** Kodirjon Khayitov · **Date:** 2026-11-15
+**Reviewer:** `ihar_rubanovich@epam.com` 
 **Brief:** the supplied wholesale supplier portal brief (`READY_PRODUCT_BRIEF_EN.txt`)
 **Prototype:**
 - **Link:** https://claude.ai/artifact/Lbrc6TwNVAwpCbcYb8VAfW. It is private until I share it from claude.ai.
