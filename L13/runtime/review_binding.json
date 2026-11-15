@@ -1,0 +1,15 @@
+{
+  "source_count": 5,
+  "automatically_flagged_ids": [
+    "classroom:5"
+  ],
+  "reviewed_ids": [
+    "classroom:5"
+  ],
+  "review_count": 1,
+  "amended_ids": [],
+  "initial_preserved": true,
+  "input_sha256": "26e124e3db8d29fd43374df818d63373cbc13bc331b555e03f2b16898c9614c0",
+  "review_sha256": "73493d5eb2f930b2e369d7358214853dce1b47e14a34d5f18e45600e2b75d723",
+  "customer_actions_executed": 0
+}

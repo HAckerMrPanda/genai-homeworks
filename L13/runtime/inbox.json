@@ -1,0 +1,32 @@
+[
+  {
+    "id": "classroom:1",
+    "client_id": "customer-1",
+    "text": "My card was charged twice ($49.99 x 2) for order 9401.",
+    "source": "classroom-synthetic"
+  },
+  {
+    "id": "classroom:2",
+    "client_id": "customer-2",
+    "text": "I cannot sign in. The login form keeps reloading.",
+    "source": "classroom-synthetic"
+  },
+  {
+    "id": "classroom:3",
+    "client_id": "customer-3",
+    "text": "I received a sign-in code I did not request. Someone may be accessing my account.",
+    "source": "classroom-synthetic"
+  },
+  {
+    "id": "classroom:4",
+    "client_id": "customer-4",
+    "text": "Opening any active order crashes the app for our entire shift of 15 employees.",
+    "source": "classroom-synthetic"
+  },
+  {
+    "id": "classroom:5",
+    "client_id": "customer-5",
+    "text": "Everything broke again. Please help!",
+    "source": "classroom-synthetic"
+  }
+]
