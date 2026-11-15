@@ -1,6 +1,7 @@
 # L13 • A support team of four agents
 
 **Author:** Kodirjon Khayitov · **Date:** 2026-11-15
+**Reviewer:** `ihar_rubanovich@epam.com` 
 **Tool:** Antigravity (Local), model Gemini 3.8 Flash High, Windows 11
 **Input:** the prepared teaching input from `scripts/classroom.py prepare --lang en`. These are 5 synthetic classroom requests (`classroom:1`–`classroom:5`, source `classroom-synthetic`). My own Telegram channel was **not** connected. No messages were sent and no network collection was done.
 
