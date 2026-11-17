@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>L12 - Local MCP server</title><style>body{margin:0;color:#172132;background:#fff;font:18px/1.65 "Segoe UI",sans-serif}main{max-width:960px;margin:auto;padding:32px 28px 64px}h1{font-size:34px;line-height:1.2}h2{font-size:24px;margin-top:30px}h3{font-size:20px}a{color:#1752a0}table{border-collapse:collapse;width:100%;margin:18px 0}td,th{border:1px solid #aab6c5;padding:8px;text-align:left;vertical-align:top}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4f8;padding:15px;font:15px/1.55 Consolas,monospace}code,p,li{overflow-wrap:anywhere}.step{padding-left:22px;text-indent:-22px}svg{width:100%;max-height:240px}</style><main><h1>L12 - Local MCP server</h1>
+<p>Use AI to create a local MCP server for sessions.json. Run the supplied tester and obtain a real response. You need Python 3.11+ and the AI assistant from L11; internet is needed once, for the first installation of the MCP library. Everything runs on your computer. Worked example: <a href="EXAMPLES.html">EXAMPLES.html</a>.</p>
+<h2>Task</h2>
+<p class="step"><strong>1.</strong> Open this lesson folder in your AI assistant and send it the whole text of <a href="AI_PROMPT_EN.txt">AI_PROMPT_EN.txt</a>. The AI creates server.py beside sessions.json (not inside examples/).</p>
+<p class="step"><strong>2.</strong> On Windows double-click <strong>Run Check EN.cmd</strong>. The first run creates .venv and installs the MCP library from requirements.txt, then runs the tester check.py. On macOS/Linux run these commands separately:</p>
+<pre><code>
+python3 -m venv .venv
+
+.venv/bin/python -m pip install -r requirements.txt
+
+.venv/bin/python check.py
+
+</code></pre>
+<p class="step"><strong>3.</strong> Check the output: tools/list contains get_session; W101 returns start=18:30; W999 returns found=false. Keep the generated JSON report in results/.</p>
+<p class="step"><strong>4.</strong> Change only W101&#x27;s start in sessions.json to 20:00. Run the same check again. It must return start=20:00 and W999 found=false. Keep the second report. Do not change check.py.</p>
+<p class="step"><strong>5.</strong> Compare the source snapshots and tool results in both reports: the only source change is the start time, and the server did not modify the source file.</p>
+<p>If you see ERROR or no [OK], send the exact error to the AI: &quot;Help fix this run. Do not change check.py; explain what failed.&quot; Repeat after the fix.</p>
+<h2>Submit</h2>
+<p>In genai-homeworks/L12/:</p>
+<p class="step"><strong>1.</strong> server.py and the final sessions.json with start 20:00.</p>
+<p class="step"><strong>2.</strong> Two JSON reports from results/: before and after editing.</p>
+<p class="step"><strong>3.</strong> README.md, 5-8 sentences: the client, the server, the source file and what changed.</p>
+<p>Do not submit .venv. The reference server in examples/ is available for comparison; if you used it, say so, and still perform both runs yourself.</p>
+<h2>Grading (10 points)</h2>
+<table>
+<tr><td>Criterion</td><td>Points</td></tr>
+<tr><td>The server starts and exposes get_session through MCP</td><td>2</td></tr>
+<tr><td>W101 is returned and W999 is correctly absent</td><td>3</td></tr>
+<tr><td>Editing the file changes the response to 20:00</td><td>2</td></tr>
+<tr><td>Code, data and two reports are submitted</td><td>2</td></tr>
+<tr><td>Client, server, file and AI roles are explained in the README</td><td>1</td></tr>
+</table></main></html>

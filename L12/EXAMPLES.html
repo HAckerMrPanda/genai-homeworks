@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>L12 - Worked example</title><style>body{margin:0;color:#172132;background:#fff;font:18px/1.65 "Segoe UI",sans-serif}main{max-width:960px;margin:auto;padding:32px 28px 64px}h1{font-size:34px;line-height:1.2}h2{font-size:24px;margin-top:30px}h3{font-size:20px}a{color:#1752a0}table{border-collapse:collapse;width:100%;margin:18px 0}td,th{border:1px solid #aab6c5;padding:8px;text-align:left;vertical-align:top}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4f8;padding:15px;font:15px/1.55 Consolas,monospace}code,p,li{overflow-wrap:anywhere}.step{padding-left:22px;text-indent:-22px}svg{width:100%;max-height:240px}</style><main><h1>L12 - Worked example</h1>
+<p><a href="examples/server.py">examples/server.py</a> is a complete reference implementation. Copy it beside sessions.json to run it, or compare it with the code generated for your task.</p>
+<h2>Before changing sessions.json</h2>
+<pre><code>
+[OK] tools/list: get_session
+
+[OK] W101: found=true, start=18:30
+
+[OK] W999: found=false
+
+[OK] Response matches the file; the server did not modify it.
+
+</code></pre>
+<p>Tool results:</p>
+<pre><code>
+{&quot;found&quot;:true,&quot;session&quot;:{&quot;id&quot;:&quot;W101&quot;,&quot;title&quot;:&quot;MCP practice&quot;,&quot;date&quot;:&quot;2026-11-04&quot;,&quot;start&quot;:&quot;18:30&quot;,&quot;timezone&quot;:&quot;Europe/Warsaw&quot;,&quot;duration_minutes&quot;:90,&quot;registration_required&quot;:true}}
+
+{&quot;found&quot;:false,&quot;session_id&quot;:&quot;W999&quot;,&quot;message&quot;:&quot;Session not found&quot;}
+
+</code></pre>
+<h2>After changing start to 20:00</h2>
+<pre><code>
+[OK] W101: found=true, start=20:00
+
+[OK] W999: found=false
+
+</code></pre>
+<table>
+<tr><td>Check</td><td>First run</td><td>Second run</td></tr>
+<tr><td>W101 start</td><td>18:30</td><td>20:00</td></tr>
+<tr><td>W999 found</td><td>false</td><td>false</td></tr>
+<tr><td>Source modified by server</td><td>No</td><td>No</td></tr>
+</table>
+<p>check.py is the MCP client; server.py reads the file. No model is called during either check.</p>
+<h2>Completed README</h2>
+<p>I used an AI assistant to create a local MCP server for sessions.json. The client is the supplied check.py; the server is my server.py. W101 first returned start 18:30. W999 returned found=false. I edited the file to 20:00, repeated the call and received 20:00. The server reads only one file. Test-client code chose the tool; a model helped write the server but was not used during the call.</p></main></html>

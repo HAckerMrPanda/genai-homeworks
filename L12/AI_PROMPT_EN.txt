@@ -1,0 +1,28 @@
+I am taking a foundational MCP lesson and do not know how to code. This folder
+contains sessions.json, requirements.txt, check.py and Run Check EN.cmd.
+
+Help me create my first MCP server. Create only server.py beside sessions.json.
+Do not change check.py or sessions.json.
+
+Requirements:
+- Python 3.11+, official mcp==2.3.0 from requirements.txt.
+- Use from mcp.server import MCPServer and mcp = MCPServer("my-session-directory").
+- Register exactly one Tool: get_session(session_id: str) -> dict using @mcp.tool().
+- On EVERY call read the adjacent sessions.json with encoding="utf-8-sig".
+  Resolve its path from __file__, independently of the terminal working directory.
+- JSON contains a sessions array. If id matches, return {"found": true, "session": record}.
+  Otherwise return {"found": false, "session_id": requested ID,
+  "message": "Session not found"}; do not invent facts.
+- Read only that file. Do not expose a file-path argument, writes, messaging,
+  external APIs or LLM calls.
+- Run mcp.run(transport="stdio") under if __name__ == "__main__".
+  Do not print from the server: stdout is reserved for MCP messages.
+
+Then explain: which program is the client, which is the server, where the file
+lives, why no website opens, and how to run Run Check EN.cmd and see get_session,
+W101 with start=18:30, and W999 with found=false. Explain how to change only
+W101's start to 20:00 in sessions.json and repeat the check.
+
+If you have terminal access, run the check and distinguish an observed pass
+from an assumption. If you can only respond in chat, provide the complete
+server.py and explain how to save it without a .txt extension.
