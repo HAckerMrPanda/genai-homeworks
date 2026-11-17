@@ -1,0 +1,12 @@
+{
+  "mode": "frozen-replay",
+  "classroom": true,
+  "lang": "en",
+  "run_id": "classroom-20261115T043907371073Z",
+  "baseline_run_id": "classroom-source",
+  "coordinator_conversation_id": null,
+  "telegram_sends_allowed": false,
+  "expected_message_count": 5,
+  "input_sha256": "26e124e3db8d29fd43374df818d63373cbc13bc331b555e03f2b16898c9614c0",
+  "policy_sha256": "abd749f66f2d6fc9b75b65279d513180285b8e7f9d3b1f3336fde15e74887d84"
+}

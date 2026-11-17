@@ -1,0 +1,11 @@
+{
+  "trigger": "automatic_triage_flags",
+  "items": [
+    {
+      "id": "classroom:5",
+      "decision": "accept",
+      "reason": "Initial classification as other/normal with review_required=true is justified because the message provides insufficient details to identify a specific feature or widespread blockage.",
+      "amendment": null
+    }
+  ]
+}

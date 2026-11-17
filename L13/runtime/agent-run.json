@@ -1,0 +1,26 @@
+{
+  "run_id": "classroom-20261115T043907371073Z",
+  "coordinator_conversation_id": null,
+  "status": "completed",
+  "phase": "support",
+  "message_count": 5,
+  "children": [
+    {
+      "name": "l13-collector",
+      "conversation_id": "507774c5-0945-4327-9c3c-7e6af8e90e3f",
+      "status": "completed"
+    },
+    {
+      "name": "l13-triage",
+      "conversation_id": "527680c2-86ee-4bcb-9c44-d6cf0d61009f",
+      "status": "completed"
+    },
+    {
+      "name": "l13-reviewer",
+      "conversation_id": "d13a451d-880f-48df-898a-add9a155fb34",
+      "status": "completed"
+    }
+  ],
+  "telegram_sends": 0,
+  "reviewed_count": 1
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "classroom:1",
+    "category": "billing",
+    "priority": "high",
+    "reason": "Customer reported duplicate charges for order 9401.",
+    "review_required": false
+  },
+  {
+    "id": "classroom:2",
+    "category": "access",
+    "priority": "normal",
+    "reason": "Account sign-in failure due to reloading login form.",
+    "review_required": false
+  },
+  {
+    "id": "classroom:3",
+    "category": "access",
+    "priority": "high",
+    "reason": "Suspected unauthorized account access after receiving an unrequested sign-in code.",
+    "review_required": false
+  },
+  {
+    "id": "classroom:4",
+    "category": "bug",
+    "priority": "high",
+    "reason": "App crash on opening orders causing widespread work blockage for 15 employees.",
+    "review_required": false
+  },
+  {
+    "id": "classroom:5",
+    "category": "other",
+    "priority": "normal",
+    "reason": "Insufficient details provided to determine the issue.",
+    "review_required": true
+  }
+]
