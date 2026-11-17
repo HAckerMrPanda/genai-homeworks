@@ -1,0 +1,9 @@
+Build a prototype B2B wholesale supplier portal.
+Buyers see their assortment and contract prices, and order by text, voice, file
+or catalog. The app prepares a draft with items, quantities and total. Quantities
+follow case sizes; availability is checked without exposing numerical inventory.
+The buyer selects a delivery address and submits the order.
+The manager sees the original input and prepared lines, makes a decision,
+forwards the order to fulfilment and updates its status. Buyers see history and
+can repeat orders. Start with sample data. Use a model capability for text/audio
+interpretation; calculate prices and totals from catalog data with ordinary code.
