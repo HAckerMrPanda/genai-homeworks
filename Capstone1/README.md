@@ -1,6 +1,5 @@
 # Capstone 1 — Voice Brief → Image
-
-**Student:** Kodirjon Khayitov
+**Student:** Kodirjon Khayitov  `kodirjon_khayitov@student.itpu.uz` 
 **Notebook (Colab, view access):** https://colab.research.google.com/drive/1i79aAi9-ogzYyu5EqeO1uAX6q4z2nfwl
 **Slides:** https://claude.ai/artifact/P7cSxyvPecBf1ChvBbxSVQ
 
