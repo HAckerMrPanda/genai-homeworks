@@ -1,0 +1,16 @@
+{
+  "lesson": "GenAI Basics • L03",
+  "model": "gemini-3.5-flash-lite",
+  "track_a_structured_output": {
+    "category": "billing",
+    "urgent": true,
+    "amount_usd": 450.0
+  },
+  "track_b_task": "Summarize the video in 5 bullet points and suggest 3 better titles (under 60 characters).",
+  "track_b_output": "**Summary:**\n* A production database outage occurred last Tuesday, lasting 47 minutes due to PostgreSQL connection pool saturation.\n* The root cause was an unindexed query in release v2.14 that caused a full table scan on the orders table during peak traffic.\n* Active connections hit the 500 max_connections limit within 3 minutes, causing timeouts in payment microservices and blocking user-facing transactions.\n* The incident was mitigated by terminating stuck backend queries, deploying an emergency hotfix adding a composite B-tree index, and increasing PgBouncer limits.\n* Key takeaways include enforcing query linting in CI/CD, adding alerts for connection pool utilization over 80%, and requiring database reviews for new query paths.\n\n**Suggested Titles (under 60 characters):**\n1. PostgreSQL Outage Post-Mortem: 47-Minute Downtime Breakdown\n2. Analyzing Our 47-Minute Production Database Outage\n3. Database Outage Post-Mortem: Root Cause & Fixes",
+  "track_b_tokens": {
+    "input": 382,
+    "output": 215,
+    "thinking": 0
+  }
+}
