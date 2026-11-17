@@ -1,0 +1,4 @@
+94fa8bc Feature 001: repeat order skips out-of-stock products; checks and evidence
+c09cb23 Record spec approval
+daf7819 Spec, plan and tasks for feature 001 (before implementation)
+83839fa Starter: WholesaleDesk (L14), agent rules, requirement, baseline + target checks
